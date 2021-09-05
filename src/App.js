@@ -11,7 +11,7 @@ function App() {
 
 let fetchTaskList = async () => {
   try {
-    let toDoListData = await axios.get("http://localhost:3000/list-all-todo");
+    let toDoListData = await axios.get("https://my-react-node-1.herokuapp.com/list-all-todo");
     console.log(toDoListData );
     setToDo([...toDoListData.data]);
   } catch (error) {
@@ -27,7 +27,7 @@ const [task,setTask] = useState("")
 let handleCreateTask = async () => {
     try {
        // eslint-disable-next-line
-     let postdata = await axios.post("http://localhost:3000/create-task",{message:task})
+     let postdata = await axios.post("https://my-react-node-1.herokuapp.com/create-task",{message:task})
      
      fetchTaskList();
      setTask("")
@@ -42,7 +42,7 @@ let handleCreateTask = async () => {
   let handleChange = async (e,id) => {
     try {
        // eslint-disable-next-line
-      let updatedata = await axios.put(`http://localhost:3000/update-task/${id}`,{status:e.target.checked})
+      let updatedata = await axios.put(`https://my-react-node-1.herokuapp.com/${id}`,{status:e.target.checked})
       fetchTaskList();
      } catch (error) {
        
@@ -53,7 +53,7 @@ let handleCreateTask = async () => {
   let handleDelete = async (id) => {
     try {
        // eslint-disable-next-line
-      let deleteData = await axios.delete(`http://localhost:3000/delete-task/${id}`)
+      let deleteData = await axios.delete(`https://my-react-node-1.herokuapp.com/${id}`)
       fetchTaskList();
     } catch (error) {
       alert(error)
