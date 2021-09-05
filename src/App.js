@@ -42,7 +42,7 @@ let handleCreateTask = async () => {
   let handleChange = async (e,id) => {
     try {
        // eslint-disable-next-line
-      let updatedata = await axios.put(`https://my-react-node-1.herokuapp.com/${id}`,{status:e.target.checked})
+      let updatedata = await axios.put(`https://my-react-node-1.herokuapp.com/update-task/${id}`,{status:e.target.checked})
       fetchTaskList();
      } catch (error) {
        
@@ -53,7 +53,7 @@ let handleCreateTask = async () => {
   let handleDelete = async (id) => {
     try {
        // eslint-disable-next-line
-      let deleteData = await axios.delete(`https://my-react-node-1.herokuapp.com/${id}`)
+      let deleteData = await axios.delete(`https://my-react-node-1.herokuapp.com/delete-task/${id}`)
       fetchTaskList();
     } catch (error) {
       alert(error)
