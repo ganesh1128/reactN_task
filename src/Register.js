@@ -4,6 +4,8 @@ import { useHistory } from "react-router";
 import { useState } from "react/cjs/react.development";
 import env from "./settings.js"
 
+
+
 function Register() {
   const [username,setusername] = useState("")
   const [password,setpassword] = useState("")
