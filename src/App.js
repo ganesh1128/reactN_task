@@ -19,9 +19,7 @@ function App() {
   <Route path="/" component={Home} exact={true} >
             <Home/>
           </Route>
-            <Route path="/register"  component={Register} exact={true} >
-            <Register/>
-            </Route>
+           
   <Switch>
         
           <Route path="/todo">
