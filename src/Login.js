@@ -2,7 +2,7 @@ import "./Login.css";
 import React,{ useState } from "react";
 import env from "./settings.js";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Login() {
   const [username,setusername] = useState("");
@@ -38,7 +38,7 @@ function Login() {
         <div className="form-floating">
           <input
             type="email"
-            className="form-control"
+            className="form-control "
             id="floatingInput"
             placeholder="name@example.com"
             value={username}
@@ -49,7 +49,7 @@ function Login() {
         <div className="form-floating">
           <input
             type="password"
-            className="form-control"
+            className="form-control mt-2"
             id="floatingPassword"
             placeholder="Password"
             value={password}
@@ -58,13 +58,16 @@ function Login() {
           <label for="floatingPassword">Password</label>
         </div>
 
-        <div className="checkbox mb-3">
+        {/* <div className="checkbox mb-3">
           <label>
             <input type="checkbox" value="remember-me" /> Remember me
           </label>
-        </div>
-        <input className="w-100 btn btn-lg btn-primary" type="submit" value="Sign in"/>
-        <p className="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+        </div> */}
+        <input className="w-100 btn btn-lg btn-primary mt-2" type="submit" value="Sign in"/>
+        <Link to="/register">
+        <input className="w-100 btn btn-lg btn-primary mt-2" type="submit" value="click here for Rigester" />
+        </Link>
+        <p className="mt-5 mb-3 text-muted">&copy; 2017–2021</p> 
       </form>
     </main>
   );

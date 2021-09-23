@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 // import { useState } from "react/cjs/react.development";
 import env from "./settings.js"
 
@@ -69,8 +70,12 @@ function Register() {
           />
           <label for="floatingPassword">Conform Password</label>
         </div>
-
+        <Link to="/register">
         <input className="w-100 btn btn-lg btn-primary mt-4" type="submit" value="Sign up"/>
+        </Link>
+        <Link to="/login">
+        <input className="w-100 btn btn-lg btn-primary mt-2" type="submit" value="click here for Login" />
+        </Link>
         <p className="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
       </form>
     </main>
