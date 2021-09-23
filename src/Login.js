@@ -42,6 +42,7 @@ function Login() {
             id="floatingInput"
             placeholder="name@example.com"
             value={username}
+            required
             onChange={e => setusername(e.target.value)}
           />
           <label for="floatingInput">Email address</label>
@@ -53,6 +54,7 @@ function Login() {
             id="floatingPassword"
             placeholder="Password"
             value={password}
+            required
             onChange={(e) => setpassword(e.target.value)}
           />
           <label for="floatingPassword">Password</label>

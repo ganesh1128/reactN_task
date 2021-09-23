@@ -43,6 +43,7 @@ function Register() {
             className="form-control"
             id="floatingInput"
             placeholder="name@example.com"
+            required
             value={username}
             onChange={e => {setusername(e.target.value)}}
           />
@@ -54,6 +55,7 @@ function Register() {
             className="form-control"
             id="floatingPassword"
             placeholder="Password"
+            required
             value={password}
             onChange={e => {setpassword(e.target.value)}}
           />
@@ -65,6 +67,7 @@ function Register() {
             className="form-control"
             id="floatingPassword"
             placeholder="Password"
+            required
             value={confirmpassword}
             onChange={e => {setconfirmpassword(e.target.value)}}
           />
