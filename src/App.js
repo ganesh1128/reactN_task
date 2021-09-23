@@ -28,7 +28,7 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/register"  component={Register} exact={true} >
+          <Route path="/register">
             <Register/>
           </Route>
           

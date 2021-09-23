@@ -70,9 +70,9 @@ function Register() {
           />
           <label for="floatingPassword">Conform Password</label>
         </div>
-        <Link to="/register">
+        
         <input className="w-100 btn btn-lg btn-primary mt-4" type="submit" value="Sign up"/>
-        </Link>
+        
         <Link to="/login">
         <input className="w-100 btn btn-lg btn-primary mt-2" type="submit" value="click here for Login" />
         </Link>
