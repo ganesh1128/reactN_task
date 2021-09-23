@@ -65,7 +65,7 @@ function Login() {
         </div> */}
         <input className="w-100 btn btn-lg btn-primary mt-2" type="submit" value="Sign in"/>
         <Link to="/register">
-        <input className="w-100 btn btn-lg btn-primary mt-2" type="submit" value="click here for Rigester" />
+        <input className="w-100 btn btn-lg btn-primary mt-2" type="submit" value="click here for Register" />
         </Link>
         <p className="mt-5 mb-3 text-muted">&copy; 2017–2021</p> 
       </form>
