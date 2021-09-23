@@ -82,7 +82,7 @@ function Todo() {
 
   return (
     <div className="container">
-      <button className="btn btn-danger" onClick={() => {
+      <button className="btn btn-danger mt-2" onClick={() => {
           window.localStorage.removeItem("app_token")
           history.push("/login")
         }}>log out</button>
