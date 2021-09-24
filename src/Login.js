@@ -7,16 +7,31 @@ import { Link, useHistory } from "react-router-dom";
 function Login() {
   const [username,setusername] = useState("");
   const [password,setpassword] = useState("");
+  const [message,setMessage]=useState("");
    const history = useHistory()
 
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
       let logindata= await axios.post(`${env.api}/login`,{username,password})
+      if(logindata.data.message === true){
+        window.localStorage.setItem("app_token",logindata.data.token)
+        history.push("/todo")
+      }else{
+        setMessage(logindata.data.message)
+        
+        setTimeout(() =>{
+          setMessage("")
+          setpassword("")
+          setusername("")
+        },3000)
+
+      }
    console.log(logindata);
-   window.localStorage.setItem("app_token",logindata.data.token)
+
+   
    //alert(logindata.data.message)
-    history.push("/todo")
+    
     } catch (error) {
       console.log(error);
     }
@@ -33,7 +48,9 @@ function Login() {
           width="72"
           height="57"
         />
+
         <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+       
 
         <div className="form-floating">
           <input
@@ -71,6 +88,10 @@ function Login() {
         </Link>
         <p className="mt-5 mb-3 text-muted">&copy; 2017–2021</p> 
       </form>
+      {
+        message !== "" ? <div className="err">{message}</div> : ""
+      }
+     
     </main>
   );
 }

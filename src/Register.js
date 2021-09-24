@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-// import { useState } from "react/cjs/react.development";
+import "./Login.css";
 import env from "./settings.js"
 
 
@@ -11,20 +11,33 @@ function Register() {
   const [username,setusername] = useState("")
   const [password,setpassword] = useState("")
   const [confirmpassword,setconfirmpassword] = useState("")
+  const [message,setMessage]=useState("");
   const history = useHistory()
+  
   let handleSubmit = async (e) => {
     e.preventDefault()
     console.log({username,password,confirmpassword});
+   if(password === confirmpassword){
     try {
       await axios.post(`${env.api}/register`,{username,password})
     history.push("/login")
     } catch (error) {
       console.log(error);
     }
+   }else{
+    setMessage("password mismatch")
+    setTimeout(() =>{
+      setMessage("")
+      setpassword("")
+      setconfirmpassword("")
+     
+    },3000)
+   }
 
   }
   return (
     <main className="form-signin text-center">
+      
       <form onSubmit={(e) => {
         handleSubmit(e)
       }}>
@@ -36,6 +49,9 @@ function Register() {
           height="57"
         />
         <h1 className="h3 mb-3 fw-normal">Please Register</h1>
+        {
+        message !== "" ? <div ><span className="err">{message}</span></div> : ""
+      }
 
         <div className="form-floating mt-4">
           <input
@@ -81,6 +97,7 @@ function Register() {
         </Link>
         <p className="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
       </form>
+     
     </main>
   );
 }
