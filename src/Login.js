@@ -1,46 +1,44 @@
 import "./Login.css";
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import env from "./settings.js";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 
 function Login() {
-  const [username,setusername] = useState("");
-  const [password,setpassword] = useState("");
-  const [message,setMessage]=useState("");
-   const history = useHistory()
+  const [username, setusername] = useState("");
+  const [password, setpassword] = useState("");
+  const [message, setMessage] = useState("");
+  const history = useHistory();
 
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let logindata= await axios.post(`${env.api}/login`,{username,password})
-      if(logindata.data.message === true){
-        window.localStorage.setItem("app_token",logindata.data.token)
-        history.push("/todo")
-      }else{
-        setMessage(logindata.data.message)
-        
-        setTimeout(() =>{
-          setMessage("")
-          setpassword("")
-          setusername("")
-        },3000)
+      let logindata = await axios.post(`${env.api}/login`, {
+        username,
+        password,
+      });
+      if (logindata.data.message === true) {
+        window.localStorage.setItem("app_token", logindata.data.token);
+        history.push("/todo");
+      } else {
+        setMessage(logindata.data.message);
 
+        setTimeout(() => {
+          setMessage("");
+          setpassword("");
+          
+        }, 3000);
       }
-   console.log(logindata);
+      console.log(logindata);
 
-   
-   //alert(logindata.data.message)
-    
+      //alert(logindata.data.message)
     } catch (error) {
       console.log(error);
     }
-   
-
-  }
+  };
   return (
     <main className="form-signin text-center">
-      <form onSubmit={handleSubmit }>
+      <form onSubmit={handleSubmit}>
         <img
           className="mb-4"
           src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg"
@@ -50,7 +48,7 @@ function Login() {
         />
 
         <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
-       
+        {message !== "" ? <div className="err">{message}</div> : ""}
 
         <div className="form-floating">
           <input
@@ -60,7 +58,7 @@ function Login() {
             placeholder="name@example.com"
             value={username}
             required
-            onChange={e => setusername(e.target.value)}
+            onChange={(e) => setusername(e.target.value)}
           />
           <label for="floatingInput">Email address</label>
         </div>
@@ -82,16 +80,20 @@ function Login() {
             <input type="checkbox" value="remember-me" /> Remember me
           </label>
         </div> */}
-        <input className="w-100 btn btn-lg btn-primary mt-2" type="submit" value="Sign in"/>
+        <input
+          className="w-100 btn btn-lg btn-primary mt-2"
+          type="submit"
+          value="Sign in"
+        />
         <Link to="/register">
-        <input className="w-100 btn btn-lg btn-primary mt-2" type="submit" value="click here for Register" />
+          <input
+            className="w-100 btn btn-lg btn-primary mt-2"
+            type="submit"
+            value="click here for Register"
+          />
         </Link>
-        <p className="mt-5 mb-3 text-muted">&copy; 2017–2021</p> 
+        <p className="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
       </form>
-      {
-        message !== "" ? <div className="err">{message}</div> : ""
-      }
-     
     </main>
   );
 }
