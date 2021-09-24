@@ -71,7 +71,7 @@ function Register() {
             value={confirmpassword}
             onChange={e => {setconfirmpassword(e.target.value)}}
           />
-          <label for="floatingPassword">Conform Password</label>
+          <label for="floatingPassword">Confirm Password</label>
         </div>
         
         <input className="w-100 btn btn-lg btn-primary mt-4" type="submit" value="Sign up"/>
